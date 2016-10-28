@@ -19,12 +19,7 @@ towerbuiltImg.src = "images/tower.png";
 var enemy ={
   x: 115,
   y: 480-32,
- //  speedx: 0,
-//   speedy: -64,
- //  move: function(){
- //  this.x += this.speedx/FPS;
-//   this.y += this.speedy/FPS;
-//  }
+
 };
 var towerbutton={
   x: 590,
@@ -42,7 +37,7 @@ function draw(){
   if(isBuilding){
   ctx.drawImage(towerbuiltImg,cursor.x,cursor.y);
   }
-  ctx.drawImage(towerbuiltImg, tower.x, tower.y);
+  ctx.drawImage(towerbuilding,tower.x,tower.y)
 }
 
 //製造城堡
