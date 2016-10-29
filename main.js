@@ -22,8 +22,7 @@ var enemy ={
   speedx:0,
   speedy:64,
   move:function(){
-    
-   
+    console.log("YA");
   }
     
   }
