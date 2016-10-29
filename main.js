@@ -59,7 +59,7 @@ $( "#game-canvas" ).on( "click", function(){
   tower.y=cursor.y;
   isBUilding=false;
   }
-  }
+  
  
 });
 
