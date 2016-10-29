@@ -24,8 +24,6 @@ var enemy ={
   move:function(){
     console.log("YA");
   }
-    
-  }
   
 
 };
