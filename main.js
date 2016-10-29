@@ -30,7 +30,7 @@ var towerbutton={
 
 //畫畫
 function draw(){
-  var noonecansee ;
+
  // enemy.move();
   ctx.drawImage(bgImg,50,0);
   ctx.drawImage(enemyImg,enemy.x,enemy.y);
@@ -57,7 +57,7 @@ $( "#game-canvas" ).on( "click", function(){
   else if(isBuilding){
   tower.x =cursor.x-cursor.x%32;
   tower.y =cursor.y-cursor.y%32;
- isBuilding=false;
+  isBuilding=false;
   }
  
 });
