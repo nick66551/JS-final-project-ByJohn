@@ -43,7 +43,7 @@ function draw(){
 
 //製造城堡
 var isBuilding = false;
-var tower{};
+var tower={};
 var cursor = {};
 $( "#game-canvas" ).on( "click", function(){
   if(isCollided(cursor.x, cursor.y, 590, 432, 50, 50)){
