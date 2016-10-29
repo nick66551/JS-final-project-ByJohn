@@ -22,7 +22,9 @@ var enemy ={
   speedx:0,
   speedy:64,
   move:function(){
-    console.log("YA");
+    this.x=this.x+this.speedx/FPS;
+    this.y=this.y+this.speedy/FPS;
+    
   }
   
 
