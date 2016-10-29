@@ -57,7 +57,7 @@ $( "#game-canvas" ).on( "click", function(){
   else if(isBuilding){
   tower.x=cursor.x;
   tower.y=cursor.y;
-  isBUilding=false;
+  isBuilding=false;
   }
   
  
