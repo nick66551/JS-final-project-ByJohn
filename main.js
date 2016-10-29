@@ -30,6 +30,7 @@ var towerbutton={
 
 //畫畫
 function draw(){
+  var noonecansee ;
  // enemy.move();
   ctx.drawImage(bgImg,50,0);
   ctx.drawImage(enemyImg,enemy.x,enemy.y);
