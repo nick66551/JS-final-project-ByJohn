@@ -28,6 +28,7 @@ var enemyPath = [
 ]
 //變數用
 var enemy ={
+  pathDes: 0,
   x: 64,
   y: 480-32,
   speedx:0,
