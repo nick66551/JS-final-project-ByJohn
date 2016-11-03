@@ -15,11 +15,11 @@ towerbuiltImg.src = "images/tower.png";
 
 //路徑
 var enemyPath = [
-{x:96, y:92}
+{x:64, y:92}
 ]
 //變數用
 var enemy ={
-  x: 96,
+  x: 64,
   y: 480-32,
   speedx:0,
   speedy:-64,
@@ -32,7 +32,7 @@ var enemy ={
 
 };
 var towerbutton={
-  x: 590,
+  x: 540,
   y: 432,
   width: 50,
   height: 50
@@ -56,7 +56,7 @@ var isBuilding = false;
 var tower={};
 var cursor = {};
 $( "#game-canvas" ).on( "click", function(){
-  if(isCollided(cursor.x, cursor.y, 590, 432, 50, 50)){
+  if(isCollided(cursor.x, cursor.y, 540, 432, 50, 50)){
     if(isBuilding){
     isBuilding= false;
   }
