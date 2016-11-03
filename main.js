@@ -25,7 +25,7 @@ var enemyPath = [
 {x:416,y:378},
 {x:416,y:314},
 {x:512,y:314}
-]
+];
 //變數用
 var enemy ={
   pathDes: 0,
@@ -35,7 +35,7 @@ var enemy ={
   speedy:-64,
   move: function(){
      console.log(enemyPath[this.pathDes].y);
-    console.log(enemyPath[this.y);
+    console.log(this.y);
     console.log(this.speedy/FPS));
     if(isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y,this.x,this.y, this.speedx/FPS, this.speedy/FPS)){
         this.x = enemyPath[this.pathDes].x;
