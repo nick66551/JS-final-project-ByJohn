@@ -15,11 +15,11 @@ towerbuiltImg.src = "images/tower.png";
 
 //路徑
 var enemyPath = [
-{x:115, y:92}
+{x:96, y:92}
 ]
 //變數用
 var enemy ={
-  x: 115,
+  x: 96,
   y: 480-32,
   speedx:0,
   speedy:-64,
