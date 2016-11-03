@@ -60,7 +60,7 @@ var enemy ={
     this.y=this.y+this.speedy/FPS;
       }
   
-  
+  }
 
 };
 var towerbutton={
