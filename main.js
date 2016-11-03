@@ -38,7 +38,7 @@ var enemy ={
         this.x = enemyPath[this.pathDes].x;
         this.y = enemyPath[this.pathDes].y;
         this.pathDes++;
- 
+        console.log("gogog")
       if(this.x>enemyPath[this.pathDes].x){
       this.speedx=-64;
       this.speedy = 0;
