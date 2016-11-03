@@ -13,8 +13,10 @@ towerImg.src = "images/tower-btn.png";
 var towerbuiltImg = document.createElement("img");
 towerbuiltImg.src = "images/tower.png";
 
-
-
+//路徑
+var enemyPath = [
+{x:115, y:92}
+]
 //變數用
 var enemy ={
   x: 115,
@@ -40,7 +42,7 @@ var towerbutton={
 function draw(){
 
 // enemy.move();
-  ctx.drawImage(bgImg,50,0);
+  ctx.drawImage(bgImg,0,0);
   ctx.drawImage(enemyImg,enemy.x,enemy.y);
   ctx.drawImage(towerImg,towerbutton.x,towerbutton.y,towerbutton.width,towerbutton.height);
   if(isBuilding){
