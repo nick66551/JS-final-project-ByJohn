@@ -37,12 +37,20 @@ var enemy ={
   speed:64,
   move: function(){
      
-    if(isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y,this.x,this.y, this.speed/FPS, this.speed/FPS)){
-      //  this.x = enemyPath[this.pathDes].x;
-      //  this.y = enemyPath[this.pathDes].y;
-      //  this.pathDes++;
-        console.log("gogog")}
- /*     if(this.x>enemyPath[this.pathDes].x){
+    if(isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y,
+                  this.x, this.y, this.speed/FPS, this.speed/FPS)){
+     
+    
+    
+    
+    
+      
+
+        this.x = enemyPath[this.pathDes].x;
+        this.y = enemyPath[this.pathDes].y;
+        this.pathDes++;
+      
+     if(this.x>enemyPath[this.pathDes].x){
       this.speedx=-64;
       this.speedy = 0;
     } 
@@ -57,7 +65,7 @@ var enemy ={
       else{
       this.speedx=0;
       this.speedy=-64;
-      }}*/
+      }}
       else{
     this.x=this.x+this.speedx/FPS;
     this.y=this.y+this.speedy/FPS;
