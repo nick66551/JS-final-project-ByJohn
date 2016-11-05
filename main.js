@@ -36,9 +36,7 @@ var enemy ={
   speedy:-64,
   speed:64,
   move: function(){
-     console.log(enemyPath[this.pathDes].y);
-    console.log(this.y);
-    console.log(isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y,this.x,this.y, this.speed/FPS, this.speed/FPS));
+     
     if(isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y,this.x,this.y, this.speed/FPS, this.speed/FPS)){
         this.x = enemyPath[this.pathDes].x;
         this.y = enemyPath[this.pathDes].y;
@@ -78,7 +76,7 @@ var towerbutton={
 //畫畫
 function draw(){
 
-  enemy.move();
+//  enemy.move();
   ctx.drawImage(bgImg,0,0);
   ctx.drawImage(enemyImg,enemy.x,enemy.y);
   ctx.drawImage(towerImg,towerbutton.x,towerbutton.y,towerbutton.width,towerbutton.height);
@@ -96,10 +94,10 @@ $( "#game-canvas" ).on( "click", function(){
   if(isCollided(cursor.x, cursor.y, 540, 432, 50, 50)){
     if(isBuilding){
     isBuilding= false;
-  }
+   }
     else{
     isBuilding = true;
-  }
+   }
   }
   else if(isBuilding){
   tower.x=cursor.x-cursor.x%32;
