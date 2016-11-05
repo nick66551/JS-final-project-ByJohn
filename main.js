@@ -76,7 +76,7 @@ var towerbutton={
 //畫畫
 function draw(){
 
-//  enemy.move();
+  enemy.move();
   ctx.drawImage(bgImg,0,0);
   ctx.drawImage(enemyImg,enemy.x,enemy.y);
   ctx.drawImage(towerImg,towerbutton.x,towerbutton.y,towerbutton.width,towerbutton.height);
