@@ -80,6 +80,7 @@ this.x = 64;
 this.y = 480-32;
 this.speedX = 0;
 this.speedY = -64;
+this.speed = 64;
 this.pathDes = 0;
 this.move = function(){ 
 	if(isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y,
@@ -110,7 +111,7 @@ this.move = function(){
       }
 }
 }
-var enemies = [ ];
+var enemies = [];
 var clock=0;
 
 var towerbutton={
