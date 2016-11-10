@@ -81,7 +81,8 @@ this.y = 480-32;
 this.speedX = 0;
 this.speedY = -64;
 this.pathDes = 0;
-this.move = function(){ if(isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y,
+this.move = function(){ 
+	if(isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y,
                   this.x, this.y, this.speed/FPS, this.speed/FPS)){
         this.x = enemyPath[this.pathDes].x;
         this.y = enemyPath[this.pathDes].y;
@@ -108,8 +109,8 @@ this.move = function(){ if(isCollided(enemyPath[this.pathDes].x, enemyPath[this.
     this.y=this.y+this.speedy/FPS;
       }
 }
-
-var enemies = [ ]  ;
+}
+var enemies = [ ];
 var clock=0;
 
 var towerbutton={
@@ -125,11 +126,10 @@ function draw(){
 	var newEnemy = new Enemy();
   enemies.push(newEnemy);
 }
-  enemy.move();
   ctx.drawImage(bgImg,0,0);
   for(var i=0; i<enemies.length; i++){
-      enemies[i].move();
-      ctx.drawImage(enemyImg, enemies[i].x, enemies[i].y);
+  enemies[i].move();
+  ctx.drawImage(enemyImg, enemies[i].x, enemies[i].y);
 }
   ctx.drawImage(towerImg,towerbutton.x,towerbutton.y,towerbutton.width,towerbutton.height);
   if(isBuilding){
