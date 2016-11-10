@@ -27,7 +27,7 @@ var enemyPath = [
 {x:512,y:314},
 {x:512,y:90}
 ];
-//變數用
+//敵人唷
 var enemy ={
   pathDes: 0,
   x: 64,
@@ -74,6 +74,44 @@ var enemy ={
   }
 
 };
+
+function Enemy() {
+this.x = 64; 
+this.y = 480-32;
+this.speedX = 0;
+this.speedY = -64;
+this.pathDes = 0;
+this.move = function(){ if(isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y,
+                  this.x, this.y, this.speed/FPS, this.speed/FPS)){
+        this.x = enemyPath[this.pathDes].x;
+        this.y = enemyPath[this.pathDes].y;
+        this.pathDes++;
+      
+     if(this.x>enemyPath[this.pathDes].x){
+      this.speedx=-64;
+      this.speedy = 0;
+    } 
+      else if(this.x<enemyPath[this.pathDes].x){
+      this.speedx=64;
+      this.speedy=0;
+    }
+      else if(this.y<enemyPath[this.pathDes].y){
+      this.speedx=0;
+      this.speedy=64;
+    }
+      else{
+      this.speedx=0;
+      this.speedy=-64;
+      }}
+      else{
+    this.x=this.x+this.speedx/FPS;
+    this.y=this.y+this.speedy/FPS;
+      }
+}
+
+var enemies = [ ]  ;
+var clock=0;
+
 var towerbutton={
   x: 525,
   y: 432,
@@ -83,15 +121,22 @@ var towerbutton={
 
 //畫畫
 function draw(){
-
+  if ( clock%80==0 ){
+	var newEnemy = new Enemy();
+  enemies.push(newEnemy);
+}
   enemy.move();
   ctx.drawImage(bgImg,0,0);
-  ctx.drawImage(enemyImg,enemy.x,enemy.y);
+  for(var i=0; i<enemies.length; i++){
+      enemies[i].move();
+      ctx.drawImage(enemyImg, enemies[i].x, enemies[i].y);
+}
   ctx.drawImage(towerImg,towerbutton.x,towerbutton.y,towerbutton.width,towerbutton.height);
   if(isBuilding){
   ctx.drawImage(towerbuiltImg,cursor.x,cursor.y);
   }
   ctx.drawImage(towerbuiltImg,tower.x,tower.y);
+  clock++;
 }
 
 //製造城堡
