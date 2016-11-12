@@ -37,7 +37,7 @@ this.x = 64;
     this.pathDes = 0;
     this.speed = 64;
     this.move = function(){
-        if( isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y, this.x, this.y, speed/FPS, speed/FPS) ){
+        if( isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y, this.x, this.y, this.speed/FPS, this.speed/FPS) ){
 
             // 首先，移動到下一個路徑點
             this.x = enemyPath[this.pathDes].x;
