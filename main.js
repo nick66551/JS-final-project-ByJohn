@@ -81,14 +81,14 @@ function draw(){
   ctx.drawImage(bgImg,0,0);
  
   enemy.move();
-  ctx.drawImage(enemyImg, enemies[i].x, enemies[i].y);
+  ctx.drawImage(enemyImg, enemy.x, enemy.y);
 
   ctx.drawImage(towerImg,towerbutton.x,towerbutton.y,towerbutton.width,towerbutton.height);
   if(isBuilding){
   ctx.drawImage(towerbuiltImg,cursor.x,cursor.y);
   }
   ctx.drawImage(towerbuiltImg,tower.x,tower.y);
-  clock++;
+
 }
 
 //製造城堡
