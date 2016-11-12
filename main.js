@@ -30,7 +30,7 @@ var enemyPath = [
 //敵人唷
 
 var enemy = {
-    x:96,
+    x:64,
     y:480-32,
     speedX:0,
     speedY:-64,
