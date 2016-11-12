@@ -93,6 +93,7 @@ function draw(){
   ctx.drawImage(towerbuiltImg,cursor.x,cursor.y);
   }
   ctx.drawImage(towerbuiltImg,tower.x,tower.y);
+   clock++;
 
 }
 
