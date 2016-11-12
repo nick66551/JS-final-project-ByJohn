@@ -79,14 +79,21 @@ var towerbutton={
 
 //畫畫
 function draw(){
+  
   if(clock%80==0){
   var newenemy= new Enemy();
   enemies.push(newenemy);
   }
   ctx.drawImage(bgImg,0,0);
  
-  enemy.move();
-  ctx.drawImage(enemyImg, enemy.x, enemy.y);
+  for(var i=0;i<enemies.length;i++){
+  enemies[i].move;
+  ctx.drawImage(enemyImg, enemies[i].x, enemies[i].y);   
+  
+  } 
+    
+
+  
 
   ctx.drawImage(towerImg,towerbutton.x,towerbutton.y,towerbutton.width,towerbutton.height);
   if(isBuilding){
