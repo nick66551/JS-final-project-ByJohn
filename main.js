@@ -2,7 +2,8 @@
 var canvas = document.getElementById("game-canvas");
 var ctx = canvas.getContext("2d");
 var FPS = 50;
-
+var clock=0;
+var enemies=[];
 //找出圖片
 var bgImg = document.createElement("img");
 bgImg.src = "images/mapwithwater.png";
@@ -78,7 +79,10 @@ var towerbutton={
 
 //畫畫
 function draw(){
-
+  if(clock%80==0){
+  var newenemy= new Enemy();
+  enemies.push(newenemy);
+  }
   ctx.drawImage(bgImg,0,0);
  
   enemy.move();
