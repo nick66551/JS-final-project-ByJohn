@@ -29,21 +29,20 @@ var enemyPath = [
 ];
 //敵人唷
 
-function Enemy() {
-this.x = 64;
-    this.y = 480-32;
-    this.speedX = 0;
-    this.speedY = -64;
-    this.pathDes = 0;
-    this.speed = 64;
-    this.move = function(){
-        if( isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y, this.x, this.y, this.speed/FPS, this.speed/FPS) ){
+var enemy = {
+    x:96,
+    y:480-32,
+    speedX:0,
+    speedY:-64,
+    pathDes: 0,
+    move: function(){
+        if( isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y, this.x, this.y, 64/FPS, 64/FPS) ){
 
-            // 首先，移動到下一個路徑點
+            // 首先，修正位置到目標路徑點
             this.x = enemyPath[this.pathDes].x;
             this.y = enemyPath[this.pathDes].y;
 
-            // 指定下一個路徑點
+            // 指定下一個路徑點為目標路徑點
             this.pathDes++;
 
             // 重新設定設定前往目標路徑點的所需的水平/垂直速度
@@ -65,10 +64,9 @@ this.x = 64;
             this.x = this.x + this.speedX/FPS;
             this.y = this.y + this.speedY/FPS;
         }
-    };
-}
-var enemies = [];
-var clock=0;
+    }
+};
+
 
 var towerbutton={
   x: 525,
@@ -79,15 +77,12 @@ var towerbutton={
 
 //畫畫
 function draw(){
-  if ( clock%80==0 ){
-	
-  enemies.push(new Enemy());
-}
+
   ctx.drawImage(bgImg,0,0);
-  for(var i=0; i<enemies.length; i++){
-  enemies[i].move();
+ 
+  enemy.move();
   ctx.drawImage(enemyImg, enemies[i].x, enemies[i].y);
-}
+
   ctx.drawImage(towerImg,towerbutton.x,towerbutton.y,towerbutton.width,towerbutton.height);
   if(isBuilding){
   ctx.drawImage(towerbuiltImg,cursor.x,cursor.y);
