@@ -35,8 +35,9 @@ this.x = 64;
     this.speedX = 0;
     this.speedY = -64;
     this.pathDes = 0;
+    this.speed = 64;
     this.move = function(){
-        if( isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y, this.x, this.y, 64/FPS, 64/FPS) ){
+        if( isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y, this.x, this.y, speed/FPS, speed/FPS) ){
 
             // 首先，移動到下一個路徑點
             this.x = enemyPath[this.pathDes].x;
@@ -79,8 +80,8 @@ var towerbutton={
 //畫畫
 function draw(){
   if ( clock%80==0 ){
-	var newEnemy = new Enemy();
-  enemies.push(newEnemy);
+	
+  enemies.push(new Enemy());
 }
   ctx.drawImage(bgImg,0,0);
   for(var i=0; i<enemies.length; i++){
