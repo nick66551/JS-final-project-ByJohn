@@ -90,7 +90,7 @@ function draw(){
   
   // 設定與印出文字
 
-   ctx.fillText( "Hello World", 100, 100 );
+   ctx.fillText( "Hello World", 20, 20 );
 
     
   for(var i=0;i<enemies.length;i++){
