@@ -1,6 +1,8 @@
 //設定畫布環境
 var canvas = document.getElementById("game-canvas");
 var ctx = canvas.getContext("2d");
+    ctx.font = "28px Arial";
+    ctx.fillStyle = "white";
 var FPS = 50;
 var clock=0;
 var enemies=[];
@@ -87,8 +89,7 @@ function draw(){
   }
   
   // 設定與印出文字
-   ctx.font = "24px Arial";
-   ctx.fillStyle = "white";
+
    ctx.fillText( "Hello World", 100, 100 );
 
     
