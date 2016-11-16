@@ -5,8 +5,10 @@ var ctx = canvas.getContext("2d");
     ctx.fillStyle = "white";
 var FPS = 50;
 var clock=0;
-var treehp=0;
+var treehp=100;
 var enemies=[];
+var crosshairImg = document.createElement("img");
+crosshairImg.src = "images/crosshair.png";
 //找出圖片
 var bgImg = document.createElement("img");
 bgImg.src = "images/mapwithwater.png";
@@ -117,13 +119,36 @@ function draw(){
   ctx.drawImage(towerbuiltImg,cursor.x,cursor.y);
   }
   ctx.drawImage(towerbuiltImg,tower.x,tower.y);
-   clock++;
+    
+  tower.searchEnemy();
+  if ( tower.aimingEnemyId!=null ) {
+    var id = tower.aimingEnemyId;
+    ctx.drawImage( crosshairImg, enemies[id].x, enemies[id].y );
+    }  
+    
+  clock++;
 
 }
 
 //製造城堡
 var isBuilding = false;
-var tower={};
+var tower={
+    range: 96,
+    aimingEnemyId: null,
+    searchEnemy: function(){
+       for(var i=0; i<enemies.length; i++){
+           var distance = Math.sqrt( 
+           Math.pow(this.x-enemies[i].x,2) + Math.pow(this.y-enemies[i].y,2) 
+           );
+       if (distance<=this.range) {
+           this.aimingEnemyId = i;
+           return;
+             }
+           }
+         // 如果都沒找到，會進到這行，清除鎖定的目標
+           this.aimingEnemyId = null;
+           }
+         };
 var cursor = {};
 $( "#game-canvas" ).on( "click", function(){
   if(isCollided(cursor.x, cursor.y, 540, 432, 50, 50)){
