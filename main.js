@@ -5,6 +5,7 @@ var ctx = canvas.getContext("2d");
     ctx.fillStyle = "white";
 var FPS = 50;
 var clock=0;
+var treehp=0;
 var enemies=[];
 //找出圖片
 var bgImg = document.createElement("img");
@@ -34,6 +35,7 @@ var enemyPath = [
 
 function Enemy() {
 this.x = 64;
+this.hp= 10;
     this.y = 480-32;
     this.speedX = 0;
     this.speedY = -64;
@@ -41,7 +43,13 @@ this.x = 64;
     this.speed = 64;
     this.move = function(){
         if( isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y, this.x, this.y, this.speed/FPS, this.speed/FPS) ){
-
+    
+            //判斷最後點
+            if (this.pathDes === enemyPath.length-1) {
+                this.hp=0;
+                treehp -= 10;
+            }
+            else{
             // 首先，移動到下一個路徑點
             this.x = enemyPath[this.pathDes].x;
             this.y = enemyPath[this.pathDes].y;
@@ -63,7 +71,7 @@ this.x = 64;
               this.speedX = 0;
               this.speedY = -64;
             }
-
+           }
         } else {
             this.x = this.x + this.speedX/FPS;
             this.y = this.y + this.speedY/FPS;
@@ -90,12 +98,14 @@ function draw(){
   
   // 設定與印出文字
 
-   ctx.fillText( "Hello World", 20, 20 );
+   ctx.fillText( "HP:"+treehp , 20, 20 );
 
     
   for(var i=0;i<enemies.length;i++){
-  enemies[i].move();
-  ctx.drawImage(enemyImg, enemies[i].x, enemies[i].y);   
+      if (enemies[i].hp<=0) {
+           enemies.splice(i,1);}
+    enemies[i].move();
+    ctx.drawImage(enemyImg, enemies[i].x, enemies[i].y);   
   
   } 
     
