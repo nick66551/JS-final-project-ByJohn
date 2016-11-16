@@ -80,12 +80,18 @@ var towerbutton={
 //畫畫
 function draw(){
   
+    ctx.drawImage(bgImg,0,0);
   if(clock%80==0){
   var newenemy= new Enemy();
   enemies.push(newenemy);
   }
-  ctx.drawImage(bgImg,0,0);
- 
+  
+  // 設定與印出文字
+   ctx.font = "24px Arial";
+   ctx.fillStyle = "white";
+   ctx.fillText( "Hello World", 100, 100 );
+
+    
   for(var i=0;i<enemies.length;i++){
   enemies[i].move();
   ctx.drawImage(enemyImg, enemies[i].x, enemies[i].y);   
