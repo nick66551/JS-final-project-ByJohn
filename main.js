@@ -46,6 +46,11 @@ this.hp= 10;
     this.move = function(){
         if( isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y, this.x, this.y, this.speed/FPS, this.speed/FPS) ){
 
+            if (this.pathDes === enemyPath.length-1) {
+                this.hp=0;
+                treehp -= 10;
+               
+            }
            
             else{
             // 首先，移動到下一個路徑點
@@ -100,15 +105,15 @@ function draw(){
 
   //敵人移動    
   for(var i=0;i<enemies.length;i++){
+      
       if (enemies[i].hp<=0) {
            enemies.splice(i,1);}
+      
     enemies[i].move();
     ctx.drawImage(enemyImg, enemies[i].x, enemies[i].y);   
   
   } 
-    
 
-  
 
   ctx.drawImage(towerImg,towerbutton.x,towerbutton.y,towerbutton.width,towerbutton.height);
   if(isBuilding){
@@ -125,6 +130,22 @@ function draw(){
 //製造城堡
 var isBuilding = false;
 var tower={
+    range: 96,
+    aimingEnemyId: null,
+    searchEnemy: function(){
+       for(var i=0; i<enemies.length; i++){
+           var distance = Math.sqrt( 
+           Math.pow(this.x-enemies[i].x,2) + Math.pow(this.y-enemies[i].y,2) 
+           );
+       if (distance<=this.range) {
+           this.aimingEnemyId = i;
+           return;
+             }
+           }
+         // 如果都沒找到，會進到這行，清除鎖定的目標
+           this.aimingEnemyId = null;
+           }
+
          };
 var cursor = {};
 $( "#game-canvas" ).on( "click", function(){
