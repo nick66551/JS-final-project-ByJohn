@@ -101,7 +101,7 @@ function draw(){
   
   // 設定與印出文字
 
-   ctx.fillText( "HP:"+treehp , 20, 20 );
+  ctx.fillText( "HP:"+treehp , 20, 20 );
 
   //敵人移動    
   for(var i=0;i<enemies.length;i++){
@@ -114,15 +114,20 @@ function draw(){
   
   } 
 
+  tower.searchEnemy();
+  if(tower.aimingEnemyID!=null){
+  var id = tower.aimingEnemyID;
+  ctx.drawImage(crosshairImg,enemies[id].x,enemies[id].y);    
+      
+  }
+    
+    
 
   ctx.drawImage(towerImg,towerbutton.x,towerbutton.y,towerbutton.width,towerbutton.height);
   if(isBuilding){
   ctx.drawImage(towerbuiltImg,cursor.x,cursor.y);
   }
-  ctx.drawImage(towerbuiltImg,tower.x,tower.y);
-    
- 
-    
+  ctx.drawImage(towerbuiltImg,tower.x,tower.y);  
   clock++;
 
 }
