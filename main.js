@@ -45,7 +45,10 @@ this.hp= 10;
     this.speed = 64;
     this.move = function(){
         if( isCollided(enemyPath[this.pathDes].x, enemyPath[this.pathDes].y, this.x, this.y, this.speed/FPS, this.speed/FPS) ){
-    
+        if (this.pathDes === enemyPath.length-1) {
+                this.hp=0;
+                treehp -= 10;
+            }
            
             else{
             // 首先，移動到下一個路徑點
