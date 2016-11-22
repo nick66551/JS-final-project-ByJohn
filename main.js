@@ -6,6 +6,8 @@ var ctx = canvas.getContext("2d");
 var FPS = 50;
 var clock=0;
 var treehp=100;
+var money=0;
+var score=0;
 var enemies=[];
 var crosshairImg = document.createElement("img");
 crosshairImg.src = "images/crosshair.png";
@@ -102,12 +104,17 @@ function draw(){
   // 設定與印出文字
 
   ctx.fillText( "HP:"+treehp , 20, 20 );
+  ctx.fillText( "Money:"+money , 20, 40 );
+  ctx.fillText( "Score:"+score , 20, 60 );
 
   //敵人移動    
   for(var i=0;i<enemies.length;i++){
       
       if (enemies[i].hp<=0) {
-           enemies.splice(i,1);}
+           enemies.splice(i,1);
+      money+=25;
+      score+=25;
+      }
       
     enemies[i].move();
     ctx.drawImage(enemyImg, enemies[i].x, enemies[i].y);   
@@ -163,13 +170,15 @@ var tower={
          // 如果都沒找到，會進到這行，清除鎖定的目標
            this.aimingEnemyId = null;
            },
-     shoot: function(){
+     shoot: function(id){
          ctx.beginPath(); // 開始畫線
          ctx.moveTo(this.x, this.y); // 先將畫筆移動到 (x1, y1)
          ctx.lineTo(enemies[this.aimingEnemyId].x, enemies[this.aimingEnemyId].y); // 畫一條直線到 (x2, y2)
          ctx.strokeStyle = 'red'; // 設定線條顏色
          ctx.lineWidth = 3; // 設定線條寬度
          ctx.stroke(); // 上色
+         enemies[id].hp = enemies[id].hp - this.damage;
+
 
            }
          };
