@@ -146,6 +146,8 @@ function draw(){
 //製造城堡
 var isBuilding = false;
 function Tower(x,y){
+    this.x=x;
+    this.y=y;
     this.range=96;
     this.aimingEnemyId=null;
     this.fireRate=1; 
