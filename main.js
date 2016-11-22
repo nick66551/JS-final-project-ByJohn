@@ -7,8 +7,9 @@ var FPS = 50;
 var clock=0;
 var treehp=100;
 var money=0;
-var score=0;
+var score=25;
 var enemies=[];
+var towers=[];
 var crosshairImg = document.createElement("img");
 crosshairImg.src = "images/crosshair.png";
 //找出圖片
@@ -121,33 +122,36 @@ function draw(){
   
   } 
 
-  tower.searchEnemy();
-  if(tower.aimingEnemyId!=null){
-  var id = tower.aimingEnemyId;
-  ctx.drawImage(crosshairImg,enemies[id].x,enemies[id].y);    
-      
-  }
+ 
     
-    
-
   ctx.drawImage(towerImg,towerbutton.x,towerbutton.y,towerbutton.width,towerbutton.height);
   if(isBuilding){
   ctx.drawImage(towerbuiltImg,cursor.x,cursor.y);
   }
-  ctx.drawImage(towerbuiltImg,tower.x,tower.y);  
+    
+ for(var i=0;i<towers.length;i++){
+  ctx.drawImage(towerbuiltImg,towers[i].x,towers[i].y);  
+  towers[i].searchEnemy();
+  if(towers[i].aimingEnemyId!=null){
+  var id = towers[i].aimingEnemyId;
+  ctx.drawImage(crosshairImg,enemies[id].x,enemies[id].y);    
+      
+  }   
+  
+ }
   clock++;
 
 }
 
 //製造城堡
 var isBuilding = false;
-var tower={
-    range: 96,
-    aimingEnemyId: null,
-    fireRate: 1, 
-    readyToShootTime: 1,
-    damage: 5,
-    searchEnemy: function(){
+function Tower(x,y){
+    this.range=96;
+    this.aimingEnemyId=null;
+    this.fireRate=1; 
+    this.readyToShootTime=1;
+    this.damage: 5,
+    this.searchEnemy: function(){
         
         this.readyToShootTime -= 1/FPS;
         
@@ -170,10 +174,10 @@ var tower={
          // 如果都沒找到，會進到這行，清除鎖定的目標
            this.aimingEnemyId = null;
            },
-     shoot: function(id){
+     this.shoot: function(id){
          ctx.beginPath(); // 開始畫線
          ctx.moveTo(this.x, this.y); // 先將畫筆移動到 (x1, y1)
-         ctx.lineTo(enemies[this.aimingEnemyId].x, enemies[this.aimingEnemyId].y); // 畫一條直線到 (x2, y2)
+         ctx.lineTo(enemies[id].x, enemies[id].y); // 畫一條直線到 (x2, y2)
          ctx.strokeStyle = 'red'; // 設定線條顏色
          ctx.lineWidth = 3; // 設定線條寬度
          ctx.stroke(); // 上色
@@ -192,9 +196,9 @@ $( "#game-canvas" ).on( "click", function(){
     isBuilding = true;
    }
   }
-  else if(isBuilding){
-  tower.x=cursor.x-cursor.x%32;
-  tower.y=cursor.y-cursor.y%32;
+  else if(isBuilding&&money>=25){
+  towers.push(new Tower(cursor.x-cursor.x%32,cursor.y-cursor.y%32));
+  money-=25;
   isBuilding=false;
   }
   
