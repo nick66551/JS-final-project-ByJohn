@@ -112,8 +112,8 @@ function draw(){
       
       if (enemies[i].hp<=0) {
            enemies.splice(i,1);
-      money+=25;
-      score+=25;
+           money+=25;
+           score+=25;
       }
       
     enemies[i].move();
@@ -160,7 +160,7 @@ var tower={
            this.aimingEnemyId = i;
            
            if(this.readyToShootTime<=0) {
-           this.shoot();
+           this.shoot(i);
            this.readyToShootTime = this.fireRate;
                 }
 
