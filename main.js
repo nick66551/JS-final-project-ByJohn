@@ -137,20 +137,41 @@ var isBuilding = false;
 var tower={
     range: 96,
     aimingEnemyId: null,
+    fireRate: 1, 
+    readyToShootTime: 1,
+    damage: 5,
     searchEnemy: function(){
+        
+        this.readyToShootTime -= 1/FPS;
+        
+
        for(var i=0; i<enemies.length; i++){
            var distance = Math.sqrt( 
            Math.pow(this.x-enemies[i].x,2) + Math.pow(this.y-enemies[i].y,2) 
            );
        if (distance<=this.range) {
            this.aimingEnemyId = i;
+           
+           if(this.readyToShootTime<=0) {
+           this.shoot();
+           this.readyToShootTime = this.fireRate;
+                }
+
            return;
              }
            }
          // 如果都沒找到，會進到這行，清除鎖定的目標
            this.aimingEnemyId = null;
-           }
+           },
+     shoot: function(){
+         ctx.beginPath(); // 開始畫線
+         ctx.moveTo(this.x, this.y); // 先將畫筆移動到 (x1, y1)
+         ctx.lineTo(enemies[this.aimingEnemyId].x, enemies[this.aimingEnemyId].y); // 畫一條直線到 (x2, y2)
+         ctx.strokeStyle = 'red'; // 設定線條顏色
+         ctx.lineWidth = 3; // 設定線條寬度
+         ctx.stroke(); // 上色
 
+           }
          };
 var cursor = {};
 $( "#game-canvas" ).on( "click", function(){
