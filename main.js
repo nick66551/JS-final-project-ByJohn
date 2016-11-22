@@ -150,7 +150,7 @@ function Tower(x,y){
     this.aimingEnemyId=null;
     this.fireRate=1; 
     this.readyToShootTime=1;
-    this.damage: 5,
+    this.damage=5;
     this.searchEnemy: function(){
         
         this.readyToShootTime -= 1/FPS;
@@ -173,7 +173,7 @@ function Tower(x,y){
            }
          // 如果都沒找到，會進到這行，清除鎖定的目標
            this.aimingEnemyId = null;
-           },
+           };
      this.shoot: function(id){
          ctx.beginPath(); // 開始畫線
          ctx.moveTo(this.x, this.y); // 先將畫筆移動到 (x1, y1)
@@ -184,7 +184,7 @@ function Tower(x,y){
          enemies[id].hp = enemies[id].hp - this.damage;
 
 
-           }
+           };
          };
 var cursor = {};
 $( "#game-canvas" ).on( "click", function(){
