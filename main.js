@@ -113,8 +113,8 @@ function draw(){
       
       if (enemies[i].hp<=0) {
            enemies.splice(i,1);
-           money+=25;
-           score+=25;
+           money+=8;
+           score+=10;
       }
       
     enemies[i].move();
