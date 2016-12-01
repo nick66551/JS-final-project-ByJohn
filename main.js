@@ -126,7 +126,7 @@ function draw(){
     
   ctx.drawImage(towerImg,towerbutton.x,towerbutton.y,towerbutton.width,towerbutton.height);
   if(isBuilding){
-  ctx.drawImage(towerbuiltImg,cursor.x,cursor.y);
+  ctx.drawImage(towerbuiltImg,cursor.x-cursor.x%32,cursor.y-cursor.y%32);
   }
     
  for(var i=0;i<towers.length;i++){
