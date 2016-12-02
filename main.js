@@ -235,8 +235,6 @@ function isCollided(pointX, pointY, targetX, targetY, targetWidth, targetHeight)
         return false;
     }
 }
-function notclick(){
-alert("就說不要點我==");
-}
+
 
 setInterval(draw, 1000/FPS);
