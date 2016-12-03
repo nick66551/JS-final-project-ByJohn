@@ -243,7 +243,7 @@ function isCollided(pointX, pointY, targetX, targetY, targetWidth, targetHeight)
 
 function gameover(){
  
-    clear(intervalID)
+    clearInterval(intervalID);
 
 }
 
