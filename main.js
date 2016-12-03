@@ -10,7 +10,8 @@ var money=25;
 var score=0;
 var enemies=[];
 var towers=[];
-var intervalID;
+var intervalID =setInterval(draw, 1000/FPS);
+
 var crosshairImg = document.createElement("img");
 crosshairImg.src = "images/crosshair.png";
 //找出圖片
@@ -140,7 +141,6 @@ function draw(){
   
  }
     
-    intervalID =setInterval(draw, 1000/FPS);
     if(treehp==0){
     gameover();
     }
