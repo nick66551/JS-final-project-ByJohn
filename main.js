@@ -242,9 +242,14 @@ function isCollided(pointX, pointY, targetX, targetY, targetWidth, targetHeight)
 }
 
 function gameover(){
- 
+    ctx.textAlign = "center";
+    ctx.font = "64px Arial";
+    ctx.fillText("GAME OVER", canvas.width/2, canvas.height/2-96);
+    ctx.font = "48px Arial";
+    ctx.fillText("you got", canvas.width/2, canvas.height/2-32);
+    ctx.font = "128px Arial";
+    ctx.fillText(score, canvas.width/2, canvas.height/2+96);
     clearInterval(intervalID);
 
 }
 
-setInterval(draw, 1000/FPS);
