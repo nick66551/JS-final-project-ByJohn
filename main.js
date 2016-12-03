@@ -115,8 +115,14 @@ function draw(){
       
       if (enemies[i].hp<=0) {
            enemies.splice(i,1);
+          
+          if(enemies[i].pathDes!=enemyPath.length-1){
+          
            money+=8;
            score+=10;
+          console.log(enemies[i].pathDes);
+          console.log(enemyPath.length-1);
+          }
       }
       
     enemies[i].move();
@@ -124,7 +130,7 @@ function draw(){
   
   } 
 
- 
+   
     
   ctx.drawImage(towerImg,towerbutton.x,towerbutton.y,towerbutton.width,towerbutton.height);
   if(isBuilding){
