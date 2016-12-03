@@ -10,6 +10,7 @@ var money=25;
 var score=0;
 var enemies=[];
 var towers=[];
+var intervalID;
 var crosshairImg = document.createElement("img");
 crosshairImg.src = "images/crosshair.png";
 //找出圖片
@@ -135,10 +136,14 @@ function draw(){
   if(towers[i].aimingEnemyId!=null){
   var id = towers[i].aimingEnemyId;
   ctx.drawImage(crosshairImg,enemies[id].x,enemies[id].y);    
-      
   }   
   
  }
+    
+    intervalID =setInterval(draw, 1000/FPS);
+    if(treehp==0){
+    gameover();
+    }
   clock++;
 
 }
@@ -236,5 +241,10 @@ function isCollided(pointX, pointY, targetX, targetY, targetWidth, targetHeight)
     }
 }
 
+function gameover(){
+ 
+    clear(intervalID)
+
+}
 
 setInterval(draw, 1000/FPS);
